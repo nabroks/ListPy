@@ -9,7 +9,7 @@
 from datetime import datetime  # Dla używania timestampu, użyję gotowych bibliotek Pythona
 from sys import exit
 
-option = None
+selection = None
 
 
 class CarNode:
@@ -62,17 +62,20 @@ class CarPark:
 
     # Opcja trzecia, drukuje listę
     def print_list(self):
+        total = 0
         car = self.root
         while car is not None:
-            print(car.reg_numb)
-            car = car.nextval
+            print(f"{car.reg_numb} koloru: {car.color}")
+            car = car.next
+            total += 1
+        print(f"Ilość samochodów na parkingu: {total}")
 
 
 def print_menu():  # Funkcja drukująca menu wyboru
-    options = ["1 : add a car",
-               "2 : remove a car",
-               "3 : print parking status",
-               "4 : quite the program"]
+    options = ["1 : Dodaj samochód",
+               "2 : Usuń samochód",
+               "3 : Status parkingu",
+               "4 : Wyjście z programu"]
     for opt in options:
         print(opt)
 
@@ -90,19 +93,20 @@ def menu():  # Funkcja wybierania opcji listy i aktywacji połączonych funkcji/
     while running:
         print_menu()
         selection = input("Wybierz opcję:")
-        if option == 1:
+        print(selection)
+        if selection == "1":
             print("== Dodaję samochód na koniec listy ==")
             reg_num = input("Podaj numer rejestracyjny:")
             color = input("Podaj kolor samochodu:")
             my_parking.at_end(reg_num, color)
-        elif option == 2:
+        elif selection == "2":
             print("== Usuwam samochód z listy ==")
             reg_num = input("Podaj numer rejestracyjny:")
             my_parking.remove_car(reg_num)
-        elif option == "3":
+        elif selection == "3":
             print("== Drukuję status parkingu ==")
             my_parking.print_list()
-        elif option == 4:
+        elif selection == "4":
             running = False
         else:
             print("Niepoprawny wybór, prosze podaj poprawną wartość")
