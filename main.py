@@ -1,12 +1,13 @@
 # coding=utf-8
 
 """Poniższy kod został napisany w języku Python. Jest on interpretacją lindek list, oryginalnie
-    tworzonej w C. Python posiada wiele cech wspolnych z C (zbieżny syntax) i nie posiada
-    mechanizmów autmatycznych dla linked list jak Java.
+    tworzonej w C. Python posiada wiele cech wspólnych z C (zbieżny syntax) i nie posiada
+    mechanizmów automatycznych dla linked list jak Java.
     Ponieważ zauważyłem że mechanizm linked list przypomina działania na obiektach, po moim
-    pytaniu na wykładzie Podstawy programowaniaa, uzyskałem zgodę na użycie języka obiektowego do tego celu"""
+    pytaniu na wykładzie Podstawy programowania, uzyskałem zgodę na użycie języka obiektowego do tego celu"""
 
-from datetime import datetime  # Dal używania timestampu, użyję gotowych bibliotek Pythona
+from datetime import datetime  # Dla używania timestampu, użyję gotowych bibliotek Pythona
+from sys import exit
 
 option = None
 
@@ -67,6 +68,47 @@ class CarPark:
             car = car.nextval
 
 
+def print_menu():  # Funkcja drukująca menu wyboru
+    options = ["1 : add a car",
+               "2 : remove a car",
+               "3 : print parking status",
+               "4 : quite the program"]
+    for opt in options:
+        print(opt)
+
+
+def menu():  # Funkcja wybierania opcji listy i aktywacji połączonych funkcji/metod
+
+    my_parking = CarPark()
+    running = True
+
+    #  Te samochody już stały na parkingu!! :D Program jest tak mądry że już je ujmuje.
+    my_parking.at_begining("WPR 2153E", "Niebieski")  # Tworzy na początku listy, pierwszy node
+    my_parking.at_end("WWL 53893", "Czerwony")
+    my_parking.at_end("WPI 534K1", "Czerwony")
+
+    while running:
+        print_menu()
+        selection = input("Wybierz opcję:")
+        if option == 1:
+            print("== Dodaję samochód na koniec listy ==")
+            reg_num = input("Podaj numer rejestracyjny:")
+            color = input("Podaj kolor samochodu:")
+            my_parking.at_end(reg_num, color)
+        elif option == 2:
+            print("== Usuwam samochód z listy ==")
+            reg_num = input("Podaj numer rejestracyjny:")
+            my_parking.remove_car(reg_num)
+        elif option == "3":
+            print("== Drukuję status parkingu ==")
+            my_parking.print_list()
+        elif option == 4:
+            running = False
+        else:
+            print("Niepoprawny wybór, prosze podaj poprawną wartość")
+    exit(0)  # Służy do eleganckiego zakończenia programu
+
+
 if __name__ == '__main__':
-    print("Hello World! \nThis is linked list, please choose your option:")
-    c1 = CarNode('WPR2153E', 'blue')
+    print("Program kontroli parkingu samochodowego v 1.0:")
+    menu()
