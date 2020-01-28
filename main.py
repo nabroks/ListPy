@@ -3,6 +3,11 @@
 """Poniższy kod został napisany w języku Python. Jest on interpretacją lindek list, oryginalnie
     tworzonej w C. Python posiada wiele cech wspólnych z C (zbieżny syntax) i nie posiada
     mechanizmów automatycznych dla linked list jak Java.
+    Na wykładzie zapytałem odnośnie struktur w C, czy nie jest to próba programowania obiektowego w języku
+    strukturalnym. Wspomniał mi Pan że zasada jest podobna i ma to pomóc zrozumieć obiekty.
+    Wspomniał Pan że mogę zrobić zadanie w języku obiektowym, i choć pewnie chodziło Panu o C, to skorzystałem
+    z języka z którym wiążę przyszłość, a który na C bazuje. Proszę o zrozumienie i mam nadzieję że to zadanie
+    będzie przynajmniej dowodem że rozumiem problematykę i pozwoli mi projekt zaliczyć.
     Ponieważ zauważyłem że mechanizm linked list przypomina działania na obiektach, po moim
     pytaniu na wykładzie Podstawy programowania, uzyskałem zgodę na użycie języka obiektowego do tego celu"""
 
