@@ -70,7 +70,7 @@ class CarPark:
         total = 0
         car = self.root
         while car is not None:
-            print(f"{car.reg_numb} koloru: {car.color}")
+            print(f"Samochód {car.reg_numb} koloru: {car.color} zaparkował o {car.time}")
             car = car.next
             total += 1
         print(f"Ilość samochodów na parkingu: {total}")
